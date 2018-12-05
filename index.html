@@ -3,9 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title>Mr.Rides</title>
+    <meta name="viewport" content="width=device-width, initial=scale1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class"navbar-brand" href="#">Mr.Rides</a>
+        <ul class="navbar-nav ml-auto">
+          <!-- Dropdown del inicio de sesión -->
+          <li class="nav-item dropdown mr-5">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">iniciar sesión</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <p class="text-center">Inicia sesión para continuar</p>
+              <div class="form-group">
+                <input type="text" class="form-control mb-2 " name="" value="" placeholder="usuario">
+                <input type="text" class="form-control" name="" value="" placeholder="contraseña">
+                <p><pre>                              </pre></p>
+                <button type="button" class="btn btn-dark float-right mr-2" name="button">prueba</button>
+              </div>
+            </div>
+          </li>
+          <!-- Modal del registro-->
+          <li class="nav-item">
+            <a class="nav-link mr-5" href="#" role="button" data-toggle="modal" data-target="#registroModal" >registrarse</a>
+              <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="registroModalLabel">Regístrate ahora!</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="button">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Holiwis</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary  mr-auto ">Registrarse</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
