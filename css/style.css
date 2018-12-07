@@ -1,0 +1,7 @@
+.container-h{
+  height: 600px;
+}
+.navs{
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 1s ease;
+}

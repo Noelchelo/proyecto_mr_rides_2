@@ -15,59 +15,74 @@
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
 </head>
-
 <body>
-
-  <!-- Start your project here-->
-  <body>
     <!-- menu del index -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark" id="main-nav">
       <div class="container-fluid">
         <a class"navbar-brand" href="#">Mr.Rides</a>
         <ul class="navbar-nav ml-auto">
-          <!-- Dropdown del inicio de sesión -->
-          <li class="nav-item dropdown mr-5">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Iniciar sesión</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <p class="text-center">Inicia sesión para continuar</p>
-              <div class="form-group">
-                <input type="text" class="form-control mb-2 " name="" value="" placeholder="usuario">
-                <input type="text" class="form-control" name="" value="" placeholder="contraseña">
-                <p><pre>                              </pre></p>
-                <button type="button" class="btn btn-dark float-right mr-2" name="button">prueba</button>
-              </div>
+            <div class="md-form form-sm m-1 mt-3 mr-3">
+              <i class="fa fa-male prefix"></i>
+              <input type="text" id="usuario-sesion" class="form-control" name="" value="">
+              <label for="usuario-sesion">Usuario</label>
             </div>
+            <div class="md-form form-sm m-1 mt-3 mr-3">
+              <i class="fa fa-lock prefix"></i>
+              <input type="password" id="registro-sesion" class="form-control validate">
+              <label for="registro-sesion" data-error="wrong" data-success="right">Contraseña</label>
+            </div>
+          <li class="nav-item mt-3">
+            <a href="#" class="nav-link" role="button">Iniciar sesión</a>
           </li>
           <!-- Modal del registro-->
-          <li class="nav-item">
+          <li class="nav-item mt-3">
             <a class="nav-link mr-5" href="#" role="button" data-toggle="modal" data-target="#registroModal" >Registrarse</a>
-              <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="registroModalLabel">Regístrate ahora!</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="button">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Holiwis</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary  mr-auto ">Registrarse</button>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    </div>
-                  </div>
-              </div>
-            </div>
           </li>
         </ul>
       </div>
       <!-- contenedor información -->
     </nav>
-
+    <!--  modal-->
+    <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registroModalLabel">Regístrate ahora!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  method="post">
+              <div class="form-group">
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Nombre">
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Apellidos">
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Teléfono">
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Nombre de usuario">
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Contraseña">
+                <input type="text" class="form-control" name="" value="" placeholder="Verificar contraseña">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary  mr-auto ">Registrarse</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal -->
     <!-- main -->
-
+    <div class="container bg-dark container-h">
+      <div class="row">
+        <div class="col-12 col-md-6 col-xl-6">
+          <p>holaaaaaaaaaaaaaaa</p>
+        </div>
+        <div class="col-12 col-md-6 col-xl-6">
+          <p>holasssssssssssxxxxxxxxxxxxx</p>
+        </div>
+      </div>
+    </div>
     <!-- main -->
     <!-- Footer -->
   <footer class="page-footer font-small unique-color-dark">
@@ -183,7 +198,6 @@
 
     </footer>
     <!-- Footer -->
-  <!-- /Start your project here-->
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
@@ -194,6 +208,7 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
 </body>
 
 </html>
