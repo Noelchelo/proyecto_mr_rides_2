@@ -8,3 +8,25 @@ table{
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 1s ease;
 }
+.prueba-color{
+  color:white;
+  text-align: center;
+}
+
+.tab-content {
+  border: 1px solid #dee2e6;
+  border-top: transparent;
+  padding: 15px;
+}
+
+.perfil{
+  border: 2px solid #aaa;
+  border-radius: 2px;
+  width: 70px;
+  height: 70px;
+}
+.dropdown-item{
+  width: 90%;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
