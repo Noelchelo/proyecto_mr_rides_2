@@ -150,12 +150,38 @@
  }
 
 
- function esValido(nombre, nombreTabla){
-    nombreTabla.forEach((usuario, index)=>{
-      if(usuario.nombre==nombre){
-      }
-    });
+/**
+ * Metodos login
+ */
+
+ function validarUsuario(){
+   let usuario = document.getElementById('usuario-sesion').value;
+   let pass = document.getElementById('pass-sesion').value;
+   let usuariosS = obtenerDatosTabla('usuarios');
+
+   for(let i in usuariosS){
+     if (usuario==usuariosS[i].nombreUsuario && pass==usuariosS[i].pass) {
+       window.location.href="dashboard.html";
+       break;
+     }
+   }
  }
+
+/**
+ * terminando
+ */
+ function usuarioExiste()
+ {
+   let nombreUsuario = document.getElementById('nombreUsuario-registro').value;
+   let usuarios=obtenerDatosTabla('usuarios');
+   for(let i in usuarios){
+     if(nombreUsuario!=usuarios[i].nombreUsuario){
+
+     }
+   }
+   alert("Ese nombre de usuario ya existe intenta con otro");
+ }
+
 
  function eventos() {
  	jQuery('#agregar-usuario-button').bind('click', (element) => {
@@ -167,6 +193,9 @@
   jQuery('#agregar-ride-ejemplo-button').on('click', function() {
     document.getElementById('salida-principal').value='';
     document.getElementById('destino-principal').value='';
+  });
+  jQuery('#btn-sesion').bind('click',(element) =>{
+    validarUsuario();
   });
  }
 
