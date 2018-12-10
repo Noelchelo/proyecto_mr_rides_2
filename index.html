@@ -29,7 +29,7 @@
             <div class="md-form form-sm m-1 mt-3 mr-3">
               <i class="fa fa-lock prefix"></i>
               <input type="password" id="pass-sesion" class="form-control validate">
-              <label for="pass-sesion" data-error="wrong" data-success="right">Contraseña</label>
+              <label for="pass-sesion" data-error="" data-success="">Contraseña</label>
             </div>
           <li class="nav-item mt-3">
             <a href="#" class="nav-link" id="btn-sesion" role="button">Iniciar sesión</a>
@@ -39,6 +39,7 @@
             <a class="nav-link mr-5" href="#" role="button" data-toggle="modal" data-target="#registroModal" >Registrarse</a>
           </li>
         </ul>
+        <!-- alerts -->
       </div>
       <!-- contenedor información -->
     </nav>
@@ -48,32 +49,32 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="registroModalLabel">Regístrate ahora!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="button">
+            <button type="button" class="close modal-btn" data-dismiss="modal" aria-label="Close" name="button">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form  method="post">
               <div class="form-group">
-                <input type="text" class="form-control mb-3" name="" value="" placeholder="Nombre" id="nombre-registro">
-                <input type="text" class="form-control mb-3" name="" value="" placeholder="Apellidos" id="apellido-registro">
-                <input type="text" class="form-control mb-3" name="" value="" placeholder="Teléfono" id="telefono-registro">
-                <input type="text" class="form-control mb-3" name="" value="" placeholder="Nombre de usuario" id="nombreUsuario-registro">
-                <input type="text" class="form-control mb-3" name="" value="" placeholder="Contraseña">
-                <input type="text" class="form-control" name="" value="" placeholder="Verificar contraseña" id="pass-registro">
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Nombre" id="nombre-registro" >
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Apellidos" id="apellido-registro" >
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Teléfono" id="telefono-registro" >
+                <input type="text" class="form-control mb-3" name="" value="" placeholder="Nombre de usuario" id="nombreUsuario-registro" >
+                <input type="password" class="form-control mb-3" name="" value=""  min="8" placeholder="Contraseña" id="pass-registro" >
+                <input type="password" class="form-control" name="" value="" min="8" placeholder="Verificar contraseña" id="rePass-registro" >
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary  mr-auto " id="agregar-usuario-button">Registrarse</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success mr-auto " id="agregar-usuario-button">Registrarse</button>
+            <button type="button" class="btn btn-secondary modal-btn" data-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
     <!-- modal -->
     <!-- main -->
-      <div class="container bg-dark container-h">
+      <div class="container bg-dark">
         <div class="row">
           <div class="col-md-12">
             <h4  class="mt-3"style="color:white; text-align: center;">Intentá agregar algún Ride o elimínalo</h4>
@@ -116,7 +117,10 @@
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="container bg-dark containerMini">
+
+      </div>
     <!-- main -->
     <!-- Footer -->
   <footer class="page-footer font-small unique-color-dark">

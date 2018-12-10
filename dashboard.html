@@ -27,7 +27,9 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto" style="margin-right: 80px;">
+
+      <ul class="navbar-nav ml-auto" style="margin-right: 65px;">
+          <li> <label class="white-text mt-4 mr-1" for="" id="usuario-lable">Noel Arguello</label> </li>
         <div class="dropdown">
           <li> <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <img src="img/profile.png" alt="perfil" class="perfil"></a>
             <div class="dropdown-menu bg-dark">
@@ -41,16 +43,225 @@
     <!-- nav -->
 
     <!-- main -->
-    <div class="container bg-dark container-h prueba-color">
+    <div class="container bg-dark  prueba-color">
       <div class="row">
         <div class="col-12">
+          <!-- tab de inicio -->
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in    culpa qui officia deserunt mollit anim id est laborum. </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">hola wee</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"> <div class="row">
+              <div class="col-md-12">
+                <label for="tabla-usuario mt-3 mb-3">Tus Rides</label>
+                <section>
+                  <table class="table table-dark" id="tabla-usuario">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Salida</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rides_usuario_table">
+                    </tbody>
+                  </table>
+                </section>
+              </div>
+            </div>
+          </div>
+          <!-- tab de Rides -->
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <form>
+              <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label for="nombreRide">Nombre del Ride</label>
+                    <input type="text"class="form-control" id="nombreRide">
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label for="salidaRide">Salida</label>
+                    <input type="text"class="form-control" id="salidaRide">
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label for="destinoRide">Destino</label>
+                    <input type="text"class="form-control" id="destinoRide">
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center mt-3 border-bottom">
+                <div class="form-group">
+                  <label for="descripcionRide">Descripción</label>
+                  <textarea rows="5" class="form-control" cols="50" id="descripcionRide"></textarea>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <label class=" mt-2 mb-2" for="cuandoRide">Cuando</label>
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="col-6 col-md-4">
+                  <div class="form-group" >
+                    <label for="horaSalidaRide">Hora de salida</label>
+                    <input type="text"class="form-control" id="horaSalidaRide">
+                  </div>
+                </div>
+                <div class="col-6 col-md-4">
+                  <div class="form-group" id="cuandoRide">
+                    <label for="horaLlegadaRide">Hora de llegada</label>
+                    <input type="text"class="form-control" id="horaLlegadaRide">
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <label class=" mt-2 mb-2" for="cuandoRide">Selecciona el día</label>
+              </div>
+              <!-- días sm -->
+              <div class="container">
+                <div class="row">
+                  <div class="col-12">
+                    <form>
+                      <div class="form-check">
+                        <input type="checkbox" name="dia" class="form-check-input" value="lunes" id="lunes-check">
+                        <label for="lunes-check">Lunes</label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form>
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" value="martes" id="martes-check">
+                        <label for="martes-check">Martes</label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 ml-2">
+                    <form>
+                      <div class="form-check">
+                        <input type="checkbox" name="dia" class="form-check-input" value="miercoles" id="miercoles-check">
+                        <label for="miercoles-check">Miércoles</label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <form>
+                    <div class="form-check">
+                      <input type="checkbox" name="dia" class="form-check-input" value="jueves" id="jueves-check">
+                      <label for="lunes-check">Jueves</label>
+                    </div>
+                  </form>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form>
+                      <div class="form-check">
+                        <input type="checkbox"  name="dia" class="form-check-input" value="viernes" id="viernes-check">
+                        <label for="viernes-check">Viernes</label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <form>
+                      <div class="form-check">
+                        <input type="checkbox"  name="dia" class="form-check-input" value="sabado" id="sabado-check">
+                        <label for="sabado-check">Sábado</label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12 ml-2">
+                    <form>
+                      <div class="form-check">
+                        <input type="checkbox" name="dia" class="form-check-input" value="jueves" id="domingo-check">
+                        <label for="domingo-check">Domingo</label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- días sm -->
+
+              <div class="d-flex  mt-4">
+                <div class="col-6 col-md-6">
+                  <button type="button" class="btn btn-dark" name="button" id="btn-cancerlar-ride" >Cancerlar</button>
+                </div>
+                <div class="col-6 col-md-6">
+                  <button type="button" class="btn btn-dark" name="button" id="btn-guardar-ride" >Guardar</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+            <!-- tab de Configuración -->
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              <form >
+                <div class="d-flex justify-content-center">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="editar-nombre">Nombre completo</label>
+                      <input type="text" class="form-control" id="editar-nombre">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center border-bottom mt-3">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="velocidad-editar">Velocidad promedio</label>
+                      <input type="text" class="form-control" id="editar-velocidad">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3 border-bottom">
+                  <div class="form-group">
+                    <label for="sobre-editar">Acerca de Ti</label>
+                    <textarea rows="5" class="form-control" cols="50" id="sobre-editar"></textarea>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3 border-bottom">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="passOriginal-editar">Contraseña actual</label>
+                      <input type="text" class="form-control" id="passOriginal-editar">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="pass-editar">Contraseña nueva</label>
+                      <input type="text" class="form-control" id="pass-editar">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center mt-3 border-bottom">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="passVerificar-editar">Contraseña actual</label>
+                      <input type="text" class="form-control" id="passVerificar-editar">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container bg-dark containerMini prueba-color">
+
     </div>
     <!-- main -->
 
@@ -179,5 +390,6 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
+  <script > cargarDatosTabla('rides_usuario_table'); </script>
   </body>
 </html>
