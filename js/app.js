@@ -1,6 +1,10 @@
 /**
  * Tablas
  */
+
+ /**
+  * Guarda a un nuevo usuario en el localStorage
+  */
  function guardarUsuario(){
    let nombre = document.getElementById('nombre-registro').value;
    let apellido = document.getElementById('apellido-registro').value;
@@ -22,6 +26,9 @@
    return usuario;
  }
 
+ /**
+  * Guarda los ride de un usuario sin registrase
+  */
  function guardarEjemplosRides(){
    let usuario = "anónimo";
    let salida = document.getElementById('salida-principal').value;
@@ -38,20 +45,26 @@
    renderizarTablaRideEjemplo('rides_ejemplo', rides);
  }
 
+ /**
+  * guarda los datos necesarios en el sessionStorage
+  */
  function datosUsuarioSession() {
    let nombreUsuario = document.getElementById('usuario-sesion').value;
-   let id= obtenerIdUsuario('usuarios',nombreUsuario);
+   let idUsuario= obtenerIdUsuario('usuarios',nombreUsuario);
 
    const usuarioSession={
      nombreUsuario,
-     id
+     idUsuario
    };
-   const usuariosSession = guardarSession('rides_usuario',usuarioSession)
+   const usuariosSession = guardarSession('usuario_session',usuarioSession);
  }
 
+ /**
+  * Guardar los ride de los usarios
+  */
  function guardarRidesUsuario(){
-   let nombreUsuario=let usuario = document.getElementById('usuario-sesion').value;
-   let id = obtenerIdUsuario('usuarios',nombreUsuario);
+   let nombreUsuario = obtenerUsuario('usuario_session');;
+   let idUsuario = obtenerIdUsuario('usuarios',nombreUsuario);
    let nombreRide = document.getElementById('nombreRide').value;
    let salida = document.getElementById('salidaRide').value;
    let destino = document.getElementById('destinoRide').value;
@@ -62,18 +75,33 @@
 
    const rideUsuario = {
      nombreUsuario,
-     id,
+     idUsuario,
      nombreRide,
      salida,
      destino,
      descripcion,
      horaSalida,
-     horaLlegada
+     horaLlegada,
      dias
    };
    return rideUsuario;
  }
 
+ /**
+  * Obtiene a un usuaio de una tabla
+  */
+ function obtenerUsuario(tableName) {
+   let nombreUsuario="";
+   let session= obtenerDatosSession(tableName);
+   for(let i in session){
+     nombreUsuario= session[i].nombreUsuario;
+     break;
+   }
+   return nombreUsuario;
+ }
+ /**
+  * verifica cuales checkboxs estan marcados para obetener el valor
+  */
  function verificarChecked(groupName){
    let result = jQuery('input[name= "'+groupName +'"]:checked');
    let dias ="";
@@ -188,8 +216,7 @@
  	let rows = "";
  	tableData.forEach((ride, index) => {
  		let row = `<tr><th scope="row">${ride.usuario}</th><td>${ride.salida}</td><td>${ride.destino}</td>`;
- 		row += `<td> <a onclick="editarElemento(this)" data-id="${ride.id}" data-entity="${tableName}" class="link edit">Edit</a>
-    |  <a  onclick="eliminarElemento(this);" data-id="${ride.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
+ 		row += `<td> <a  onclick="eliminarElemento(this);" data-id="${ride.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
  		rows += row + '</tr>';
  	});
  	table.html(rows);
@@ -198,10 +225,10 @@
 function rederizarTablaRidesUsuario(tableName,tableData) {
   let table = jQuery(`#${tableName}_table`);
   let rows = "";
-  tableData.forEach((usuarioSession, index) =>{
-    let row = `<tr><th scope="row">${usuarioSession.usuario}</th><td>${usuarioSession.salida}</td><td>${usuarioSession.destino}</td>`;
- 		row += `<td> <a onclick="editarElemento(this)" data-id="${usuarioSession.id}" data-entity="${tableName}" class="link edit">Edit</a>
-    |  <a  onclick="eliminarElemento(this);" data-id="${usuarioSession.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
+  tableData.forEach((rideUsuario, index) =>{
+    let row = `<tr><th scope="row">${rideUsuario.nombreRide}</th><td>${rideUsuario.salida}</td><td>${rideUsuario.destino}</td>`;
+ 		row += `<td> <a onclick="editarElemento(this)" data-id="${rideUsuario.id}" data-entity="${tableName}" class="link edit">Edit</a>
+    |  <a  onclick="eliminarElemento(this);" data-id="${rideUsuario.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
  		rows += row + '</tr>';
   });
   table.html(rows);
@@ -304,7 +331,7 @@ function obtenerDatosSession(tableName) {
 
 function verificarRideUsuario(){
   let rideUsuario = guardarRidesUsuario();
-  if(!rideUsuario.nombreUsuario||!rideUsuario.id || !rideUsuario.nombreRide || !rideUsuario.salida
+  if(!rideUsuario.nombreUsuario||!rideUsuario.idUsuario || !rideUsuario.nombreRide || !rideUsuario.salida
   || !rideUsuario.destino){
     window.alert("Recuerda llenar los campos necesarios, nombre del ride, salida y destino");
   }else{
@@ -324,6 +351,10 @@ function limpiarModal(){
  	});
 }
 
+function cerrarSesion(){
+    sessionStorage.clear();
+}
+
  function eventos() {
  	jQuery('#agregar-usuario-button').bind('click', (element) => {
  		verificarRegistro();
@@ -339,9 +370,10 @@ function limpiarModal(){
     validarUsuario();
     datosUsuarioSession();
   });
-  jQuery('#btn-guardar-ride').bind('click',(element)=>{
+  jQuery('#btn-guardar-ride').on('click',(element)=>{
     verificarRideUsuario();
   });
+
   limpiarModal();
  }
 

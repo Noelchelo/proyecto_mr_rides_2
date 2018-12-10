@@ -29,12 +29,12 @@
       </ul>
 
       <ul class="navbar-nav ml-auto" style="margin-right: 65px;">
-          <li> <label class="white-text mt-4 mr-1" for="" id="usuario-lable">Noel Arguello</label> </li>
+            <a href="" id="lb_usuario" disable class="mt-4 mr-1 prueba-color">hola</a>
         <div class="dropdown">
           <li> <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <img src="img/profile.png" alt="perfil" class="perfil"></a>
             <div class="dropdown-menu bg-dark">
-              <a class="dropdown-item blue-grey-text " href="#">Cuenta</a>
-              <a class="dropdown-item blue-grey-text" href="#">Cerrar sesión</a>
+              <a class="dropdown-item blue-grey-text " id="a-configurar-cuenta"  >Cuenta</a>
+              <a class="dropdown-item blue-grey-text" id="a-cerrar-session" onclick="cerrarSesion()" href="index.html"">Cerrar sesión</a>
             </div>
           </li>
         </div>
@@ -254,6 +254,11 @@
                     </div>
                   </div>
                 </div>
+                <div class="d-flex justify-content-center mt-4">
+                  <div class="col-6 col-md-8">
+                    <button type="button" class="btn btn-dark" name="button" id="btn-guardar-configuracion" >Guardar</button>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -390,6 +395,7 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
-  <script > cargarDatosTabla('rides_usuario_table'); </script>
+  <script> cargarDatosTabla('rides_usuario'); </script>
+  <script> let us = obtenerUsuario('usuario_session'); $('#lb_usuario').text(us);</script>
   </body>
 </html>
