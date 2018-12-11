@@ -5,6 +5,8 @@
  /**
   * Guarda a un nuevo usuario en el localStorage
   */
+
+
  function guardarUsuario(){
    let nombre = document.getElementById('nombre-registro').value;
    let apellido = document.getElementById('apellido-registro').value;
@@ -222,32 +224,101 @@
  	table.html(rows);
  }
 
-function rederizarTablaRidesUsuario(tableName,tableData) {
+function renderizarTablaRidesUsuario(tableName,tableData) {
   let table = jQuery(`#${tableName}_table`);
   let rows = "";
   tableData.forEach((rideUsuario, index) =>{
     let row = `<tr><th scope="row">${rideUsuario.nombreRide}</th><td>${rideUsuario.salida}</td><td>${rideUsuario.destino}</td>`;
- 		row += `<td> <a onclick="editarElemento(this)" data-id="${rideUsuario.id}" data-entity="${tableName}" class="link edit">Edit</a>
-    |  <a  onclick="eliminarElemento(this);" data-id="${rideUsuario.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
+ 		row += `<td> <a onclick="editarElementoRide(this)" data-id="${rideUsuario.id}" data-entity="${tableName}" class="link edit">Edit</a> |  <a  onclick="eliminarElementoRideUsuario(this)" data-id="${rideUsuario.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
  		rows += row + '</tr>';
   });
   table.html(rows);
 }
+function renderizarTablaBusqueda(salida, llegada, nombreTabla, datosTabla) {
+  let table = jQuery(`#${nombreTabla}_table`);
+  let rows = "";
+  datosTabla.forEach((ride, index) => {
+    if(salida == ride.salida && llegada == ride.destino){
+      let row = `<tr><th scope="row">${ride.usuario}</th><td>${ride.salida}</td><td>${ride.destino}</td>`;
+   		row += `<td> <a  onclick="eliminarElemento(this);" data-id="${ride.id}" data-entity="${tableName}" class="link delete">Delete</a></td>`;
+   		rows += row + '</tr>';
+    }
+  });
+  table.html(rows);
+}
 
+let dataObj="";
+let bandera=1;
 /**
  * Elimina un elemento de una tabla
  */
  function eliminarElemento(element) {
- 	const dataObj = jQuery(element).data();
+ 	 dataObj = jQuery(element).data();
  	const newEntities = eliminarDesdeTabla(dataObj.entity, dataObj.id);
  	renderizarTablaRideEjemplo(dataObj.entity, newEntities);
  }
+
+ function eliminarElementoRideUsuario(element) {
+ 	const dataObj = jQuery(element).data();
+ 	const newEntities = eliminarDesdeTabla(dataObj.entity, dataObj.id);
+ 	renderizarTablaRidesUsuario(dataObj.entity, newEntities);
+ }
+
+function editarElementoRide(element){
+  bandera=0;
+   dataObj = jQuery(element).data();
+  let tabla = obtenerDatosTabla('rides_usuario');
+  let usuarioSession= dataObj.id;
+  console.log(usuarioSession);
+  for(let i in tabla){
+    if(usuarioSession==tabla[i].id){
+      console.log(+ tabla[i].nombreUsuario);
+      document.getElementById('nombreRide').value= tabla[i].nombreRide;
+      document.getElementById('salidaRide').value= tabla[i].salida;
+      document.getElementById('destinoRide').value= tabla[i].destino;
+      document.getElementById('descripcionRide').value= tabla[i].descripcion;
+      document.getElementById('horaSalidaRide').value= tabla[i].horaSalida;
+      document.getElementById('horaLlegadaRide').value= tabla[i].horaLlegada;
+      break;
+      }
+    }
+}
+
+function guardarEdicionRides(){
+  let idUsuario= obtenerDatosSession('usuario_session')[0].idUsuario;
+  console.log(id);
+  let nombreUsuario=obtenerDatosSession('usuario_session')[0].nombreUsuario;
+  let nombreRide = document.getElementById('nombreRide').value;
+  let salida = document.getElementById('salidaRide').value;
+  let destino = document.getElementById('destinoRide').value;
+  let descripcion = document.getElementById('descripcionRide').value;
+  let horaSalida = document.getElementById('horaSaliaRide').value;
+  let horaLlegada = document.getElementById('horaLlegadaRide').value;
+  let dias=";"
+  let ride={
+    nombreUsuario,
+    idUsuario,
+    nombreRide,
+    salida,
+    destino,
+    descripción,
+    horaSalida,
+    horaLlegada,
+    dias
+  };
+  eliminarDesdeTabla('rides_usuario',dataObj.id);
+  insertarEnTabla('rides_usuario', ride);
+}
 
  /**
   * carga la tabla
   */
  function cargarDatosTabla(tableName) {
  	renderizarTablaRideEjemplo(tableName, obtenerDatosTabla(tableName));
+ }
+
+ function cargarDatosRideUsuario(tableName) {
+ 	renderizarTablaRidesUsuario(tableName, obtenerDatosTabla(tableName));
  }
 
  /**
@@ -283,6 +354,56 @@ function obtenerDatosSession(tableName) {
 }
 
 /**
+ * cargar los datos para editarlos
+ */
+function cargarDatosEditar(){
+  let tabla = obtenerDatosTabla('usuarios');
+  let usuarioSession= obtenerDatosSession('usuario_session')[0].nombreUsuario;
+  console.log(usuarioSession);
+  for(let i in tabla){
+    if(usuarioSession==tabla[i].nombreUsuario){
+      console.log(+ tabla[i].nombreUsuario);
+      document.getElementById('editar-nombre').value= tabla[i].nombre;
+      document.getElementById('editar-apellido').value= tabla[i].apellido;
+      document.getElementById('editar-telefono').value= tabla[i].telefono;
+      document.getElementById('editar-velocidad').value= tabla[i].velocidad;
+      document.getElementById('sobre-editar').value= tabla[i].sobreMi;
+      document.getElementById('passOriginal-editar').value= tabla[i].pass;
+        break;
+      }
+    }
+  }
+
+  /**
+   * Edita un usuario
+   */
+  function editarDatosUsuario(){
+    let id= obtenerDatosSession('usuario_session')[0].idUsuario;
+    console.log(id);
+    let nombreUsuario=obtenerDatosSession('usuario_session')[0].nombreUsuario;
+    let nombre = document.getElementById('editar-nombre').value;
+    let apellido = document.getElementById('editar-apellido').value;
+    let telefono = document.getElementById('editar-telefono').value;
+    let velocidad = document.getElementById('editar-velocidad').value;
+    let sobre = document.getElementById('sobre-editar').value;
+    let pass = document.getElementById('passOriginal-editar').value;
+    let usuarioEditado={
+      nombre,
+      apellido,
+      telefono,
+      nombreUsuario,
+      pass,
+      velocidad,
+      sobre,
+      id
+    };
+    eliminarDesdeTabla('usuarios',id);
+    insertarEnTabla('usuarios',usuarioEditado);
+  }
+
+
+
+/**
  * Metodos login
  */
 
@@ -300,7 +421,7 @@ function obtenerDatosSession(tableName) {
  }
 
 /**
- * terminando
+ * veririca si un usuario ya exite para no guerdarlo
  */
  function verificarRegistro(){
    let nombreUsuario = document.getElementById('nombreUsuario-registro').value;
@@ -312,7 +433,7 @@ function obtenerDatosSession(tableName) {
        break;
      }
    }
-   const usuario= guardarUsuario();
+   let usuario= guardarUsuario();
    if(!usuario.nombre || !usuario.apellido || !usuario.telefono ||
    !usuario.nombreUsuario || !usuario.pass || !document.getElementById('rePass-registro').value){
      window.alert("Recuerda llenar todos los campos");
@@ -328,7 +449,9 @@ function obtenerDatosSession(tableName) {
       }
    }
 }
-
+/**
+ * pide los valores minimos para guardar un ride
+ */
 function verificarRideUsuario(){
   let rideUsuario = guardarRidesUsuario();
   if(!rideUsuario.nombreUsuario||!rideUsuario.idUsuario || !rideUsuario.nombreRide || !rideUsuario.salida
@@ -336,10 +459,21 @@ function verificarRideUsuario(){
     window.alert("Recuerda llenar los campos necesarios, nombre del ride, salida y destino");
   }else{
     const ridesUsuario = insertarEnTabla('rides_usuario',rideUsuario);
-    rederizarTablaRidesUsuario('rides_usuario',ridesUsuario);
+    renderizarTablaRidesUsuario('rides_usuario',ridesUsuario);
   }
 }
 
+function verificarCamposInicio(campoUno, campoDos, nombreTabla, datosTabla){
+  if(!campoUno || !campoDos){
+    window.alert("No olvides llenar los campos");
+  }else{
+    renderizarTablaBusqueda(campoUno, campoDos, nombreTabla, datosTabla);
+  }
+}
+
+/**
+ * limpia el modal del registro
+ */
 function limpiarModal(){
   jQuery('.modal-btn').on('click', function() {
  		document.getElementById('nombre-registro').value="";
@@ -351,7 +485,23 @@ function limpiarModal(){
  	});
 }
 
+function limpiarRide(){
+  jQuery('#btn-guardar-ride').on('click',function(){
+    document.getElementById('nombreRide').value="";
+    document.getElementById('salidaRide').value="";
+    document.getElementById('destinoRide').value="";
+    document.getElementById('descripcionRide').value="";
+    document.getElementById('horaSalidaRide').value="";
+    document.getElementById('horaLlegadaRide').value="";
+
+  });
+}
+
+/**
+ * limpia el sessionStorage cuando cierra la sesión
+ */
 function cerrarSesion(){
+  window.location.href="index.html";
     sessionStorage.clear();
 }
 
@@ -374,6 +524,19 @@ function cerrarSesion(){
     verificarRideUsuario();
   });
 
+  jQuery('#btn-guardar-configuracion').bind('click',(element)=>{
+    editarDatosUsuario();
+  });
+  jQuery('#btn-guardar-configuracion').bind('click',(element)=>{
+    if(bandera==0){
+      editarElementoRide();
+      bandera=1;
+    }
+  });
+  jQuery('#btn-cancerlar-ride').bind('click',(element)=>{
+    window.location.href="dashboard.html";
+  });
+  limpiarRide();
   limpiarModal();
  }
 

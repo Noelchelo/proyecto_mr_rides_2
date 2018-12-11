@@ -22,8 +22,8 @@
         <li class="nav-item">
           <div class="nav" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active mr-3" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" >Inicio</a>
-            <a class="nav-item nav-link mr-3" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" >Rides</a>
-            <a class="nav-item nav-link " id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Configuración</a>
+            <a class="nav-item nav-link mr-3" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"  role="tab" aria-controls="nav-profile" aria-selected="false" >Rides</a>
+            <a class="nav-item nav-link " id="nav-contact-tab" data-toggle="tab" href="#nav-contact" onclick="cargarDatosEditar();" role="tab" aria-controls="nav-contact" aria-selected="false">Configuración</a>
           </div>
         </li>
       </ul>
@@ -34,7 +34,7 @@
           <li> <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <img src="img/profile.png" alt="perfil" class="perfil"></a>
             <div class="dropdown-menu bg-dark">
               <a class="dropdown-item blue-grey-text " id="a-configurar-cuenta"  >Cuenta</a>
-              <a class="dropdown-item blue-grey-text" id="a-cerrar-session" onclick="cerrarSesion()" href="index.html"">Cerrar sesión</a>
+              <a class="dropdown-item blue-grey-text" id="a-cerrar-session" onclick="cerrarSesion()">Cerrar sesión</a>
             </div>
           </li>
         </div>
@@ -211,15 +211,31 @@
                 <div class="d-flex justify-content-center">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label for="editar-nombre">Nombre completo</label>
+                      <label for="editar-nombre">Nombre</label>
                       <input type="text" class="form-control" id="editar-nombre">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="editar-apellido">Apellidos</label>
+                      <input type="text" class="form-control" id="editar-apellido">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label for="editar-telefono">Teléfono</label>
+                      <input type="text" class="form-control" id="editar-telefono">
                     </div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-center border-bottom mt-3">
                   <div class="col-12 col-md-6">
                     <div class="form-group">
-                      <label for="velocidad-editar">Velocidad promedio</label>
+                      <label for="editar-velocidad">Velocidad promedio</label>
                       <input type="text" class="form-control" id="editar-velocidad">
                     </div>
                   </div>
@@ -395,7 +411,7 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
-  <script> cargarDatosTabla('rides_usuario'); </script>
+  <script> cargarDatosRideUsuario('rides_usuario'); </script>
   <script> let us = obtenerUsuario('usuario_session'); $('#lb_usuario').text(us);</script>
   </body>
 </html>
